@@ -1,1 +1,24 @@
-<p>form works!</p>
+<div class="form_component">
+    <form class="form_component_form">
+        <div class="form_component_title" >
+            <h2>Create User</h2>
+        </div>
+        <div class="form_component_container">
+            <input type="text" name="name" placeholder="Name" required class="input_100" value={{name}}>
+            <div class="form_component_container_50">
+                <input type="number" name="phone" placeholder="Phone" required class="input_50" value={{phone}}>
+                <input type="number" name="age" placeholder="Age" required class="input_50" value={{age}}> 
+            </div>
+            
+            <div class="form_component_radio">
+                <input type="radio" name="genre" required>
+                <label for="Male">Male</label>
+                <input type="radio" name="genre">
+                <label for="Female">Female</label>
+            </div>
+            <div class="form_component_container_submit">
+                <input type="submit" value="Register User" class="form_component_submit">
+            </div>
+        </div>
+    </form>
+</div>

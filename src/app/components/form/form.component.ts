@@ -6,9 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  public name: String;
+  public phone:Number;
+  public age:Number;
+  public genre:String;
 
-  constructor() { }
-
+  
+  
+  constructor() { 
+    this.name="";
+    this.phone=null;
+    this.age=null;
+    this.genre="";
+  }
+    
   ngOnInit(): void {
   }
 
