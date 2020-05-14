@@ -57,6 +57,16 @@
     display: flex;
     justify-content: space-between;
 }
+.alert-danger_100{
+    width: 100%;
+    background-color:crimson;
+    color: #fff;
+}
+.alert-danger_50{
+    width: 49%;
+    background-color:crimson;
+    color: #fff;
+}
 
 @media(max-width:500px){
     .input_50{

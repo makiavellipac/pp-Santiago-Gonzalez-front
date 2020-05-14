@@ -1,19 +1,41 @@
 <div class="form_component">
-    <form class="form_component_form">
+    <form class="form_component_form" #f="ngForm" (ngSubmit)="submit(f)">
         <div class="form_component_title" >
             <h2>Create User</h2>
         </div>
         <div class="form_component_container">
-            <input type="text" name="name" placeholder="Name" required class="input_100" value={{name}}>
-            <div class="form_component_container_50">
-                <input type="number" name="phone" placeholder="Phone" required class="input_50" value={{phone}}>
-                <input type="number" name="age" placeholder="Age" required class="input_50" value={{age}}> 
+            <input minlength="3" maxlength="50" pattern="^[a-zA-Z ]*$" required ngModel 
+                   name="name" #Name="ngModel" id="Name" type="text" placeholder="Name"class="input_100" value={{name}}>
+            <div class="alert-danger_100" *ngIf="Name.touched && !Name.valid">
+                <div *ngIf="Name.errors.required">Name is required</div>
+                <div *ngIf="Name.errors.minlength">Name should be minimum 3 character</div>
+                <div *ngIf="Name.errors.pattern">Name only letters are accepted</div>
             </div>
-            
+            <div class="form_component_container_50">
+                <input min="1000000" max="99999999999999999999" type="number" required ngModel
+                name="phone" #Phone="ngModel" id="phone" placeholder="Phone" class="input_50" value={{phone}}>
+                <input min="0" max="125" type="number" required ngModel name="age" 
+                #Age="ngModel" id="age" placeholder="Age" required class="input_50" value={{age}}> 
+            </div>
+            <div class="form_component_container_50">
+                <div class="alert-danger_50" *ngIf="(Phone.touched && !Phone.valid) ||
+                                                    (Phone.touched && Phone.value<1000000)||
+                                                    (Phone.value>99999999999999999999)">
+                    <div *ngIf="Phone.errors.required">Phone is required</div>
+                    Phone 7 to 20 digit numbers
+                </div>
+                <div class="alert-danger_50" *ngIf="(Age.touched && !Age.valid) ||
+                                                    (Age.touched && Age.value<0)||
+                                                    (Age.value>125)">
+                    <div *ngIf="Phone.errors.required">Age is required</div>
+                    Age 0 to 125
+                </div>
+            </div>
+                
             <div class="form_component_radio">
-                <input type="radio" name="genre" required>
+                <input type="radio" ngModel name="gender" required value="Male">
                 <label for="Male">Male</label>
-                <input type="radio" name="genre">
+                <input type="radio" ngModel name="gender" required value="Female">
                 <label for="Female">Female</label>
             </div>
             <div class="form_component_container_submit">

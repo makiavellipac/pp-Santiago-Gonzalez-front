@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { error } from '@angular/compiler/src/util';
+import { Component, OnInit, NgModule } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-form',
@@ -13,14 +15,23 @@ export class FormComponent implements OnInit {
 
   
   
-  constructor() { 
+  constructor(private http:HttpClient) { 
     this.name="";
     this.phone=null;
     this.age=null;
     this.genre="";
   }
+
     
   ngOnInit(): void {
+  }
+  submit(f){
+    const value=f.value
+    console.log(value)
+    this.http.post('http://localhost:3000/newRegistry',value)
+    .subscribe(response=>{
+      this.name=""
+    })
   }
 
 }
