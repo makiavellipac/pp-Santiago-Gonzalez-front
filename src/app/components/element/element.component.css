@@ -1,0 +1,47 @@
+.table{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+.table_name{
+    width: 98%;
+}
+.header{
+    display: flex;
+    background-color: darkgrey;
+    border-radius:  7px;
+    text-align: center;
+    color: honeydew;
+}
+.header_15,.element_15{
+    width: 15%;
+}
+.header_15{
+    border-left: 1px solid gray;
+    
+}
+.header_40,.element_40{
+    width: 40%;
+}
+.table_content{
+    padding: 0;
+}
+.element{
+    list-style: none;
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.element_15,.element_40{
+    padding-left: 10px;
+}
+.button{
+    display: flex;
+    justify-content: center;
+}
+.button_delete{
+    background-color: crimson;
+    color: #fff;
+    border: none;
+}
