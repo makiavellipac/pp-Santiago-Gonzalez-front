@@ -17,8 +17,8 @@
                 
             </div>
         </div>
-        <div class="table_content">
-            <div *ngFor="let element of data" class="element">
+        <div class="table_content" *ngIf="data">
+            <div *ngFor="let element of data.data" class="element">
                 <div class="element_40">
                     {{element.name}}
                 </div>
