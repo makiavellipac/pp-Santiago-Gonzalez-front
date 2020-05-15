@@ -1,1 +1,9 @@
-<p>search works!</p>
+<form [formGroup]="form" (keyup.enter)="searchUser()">
+    <label class="search_bar">
+        Search Bar
+            <input type="text" placeholder="Search User" class="search_bar_input" formControlName="search" >
+    </label>
+</form>
+
+
+
