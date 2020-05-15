@@ -1,46 +1,54 @@
-<div class="form_component">
-    <form class="form_component_form" #f="ngForm" (ngSubmit)="submit(f)">
-        <div class="form_component_title" >
-            <h2>Create User</h2>
-        </div>
-        <div class="form_component_container">
-            <input minlength="3" maxlength="50" pattern="^[a-zA-Z ]*$" required ngModel 
-                   name="name" #Name="ngModel" id="Name" type="text" placeholder="Name"class="input_100" value={{name}}>
-            <div class="alert-danger_100" *ngIf="Name.touched && !Name.valid">
-                <div *ngIf="Name.errors.required">Name is required</div>
-                <div *ngIf="Name.errors.minlength">Name should be minimum 3 character</div>
-                <div *ngIf="Name.errors.pattern">Name only letters are accepted</div>
+<form class="form_component" [formGroup]="form" (ngSubmit)="post()">
+    <div class="form_component_title">
+        <h2>Create User</h2>
+    </div>
+    <div class="form_component_container">
+        <div *ngIf="form.errors" class="error_100">
+            <div *ngIf="form.errors.invalidCreate">
+                ERROR:Complete all fields
             </div>
-            <div class="form_component_container_50">
-                <input min="1000000" max="99999999999999999999" type="number" required ngModel
-                name="phone" #Phone="ngModel" id="phone" placeholder="Phone" class="input_50" value={{phone}}>
-                <input min="0" max="125" type="number" required ngModel name="age" 
-                #Age="ngModel" id="age" placeholder="Age" required class="input_50" value={{age}}> 
-            </div>
-            <div class="form_component_container_50">
-                <div class="alert-danger_50" *ngIf="(Phone.touched && !Phone.valid) ||
-                                                    (Phone.touched && Phone.value<1000000)||
-                                                    (Phone.value>99999999999999999999)">
-                    <div *ngIf="Phone.errors.required">Phone is required</div>
-                    Phone 7 to 20 digit numbers
-                </div>
-                <div class="alert-danger_50" *ngIf="(Age.touched && !Age.valid) ||
-                                                    (Age.touched && Age.value<0)||
-                                                    (Age.value>125)">
-                    <div *ngIf="Phone.errors.required">Age is required</div>
-                    Age 0 to 125
-                </div>
-            </div>
-                
-            <div class="form_component_radio">
-                <input type="radio" ngModel name="gender" required value="Male">
-                <label for="Male">Male</label>
-                <input type="radio" ngModel name="gender" required value="Female">
-                <label for="Female">Female</label>
-            </div>
-            <div class="form_component_container_submit">
-                <input type="submit" value="Register User" class="form_component_submit">
+            <div *ngIf="form.errors.invalidResponse">
+                ERROR:Server Error
             </div>
         </div>
-    </form>
-</div>
+        <div>
+            <input type="text" placeholder="Name" class="input_100" formControlName="name">
+            <div *ngIf="name.touched && name.invalid" class="error_100">
+                <div *ngIf="name.errors.required">Name is required</div>
+                <div *ngIf="name.errors.minlength">Name should be minimum 3 character</div>
+                <div *ngIf="name.errors.maxlength">Name should be maximum 50 character</div>
+                <div *ngIf="name.errors.pattern">Name only letters are accepted</div>
+            </div>
+        </div>
+        
+        <div class="form_component_container_50">
+            <div style="width: 100%;">
+                <input type="number" placeholder="Phone" class="input_50" formControlName="phone">
+                <div *ngIf="phone.touched && phone.invalid" class="error_50">
+                    <div *ngIf="phone.errors.required">Phone is required</div>
+                    <div *ngIf="phone.errors.min">Phone should be minimum 7 digits</div>
+                    <div *ngIf="phone.errors.max">Phone should be maximum 20 digits</div>
+                </div>
+            </div>
+            <div style="width: 100%;">
+                <input type="number" placeholder="Age" class="input_50" formControlName="age">
+                <div *ngIf="age.touched && age.invalid" class="error_50">
+                    <div *ngIf="age.errors.required">Age is required</div>
+                    <div *ngIf="age.errors.min">The minimum age is 1 year</div>
+                    <div *ngIf="age.errors.max">The maximum age is 125 years</div>
+                </div>
+            </div>
+        </div>
+        <div class="form_component_radio">
+            <label>
+                <input type="radio"  formControlName="gender" value="Male">
+                    Male
+            </label>
+            <label >
+                <input type="radio" formControlName="gender" value="Female">
+                Female
+            </label>
+        </div>
+        <input type="submit" value="Register User" class="form_component_submit">
+    </div>
+</form>
