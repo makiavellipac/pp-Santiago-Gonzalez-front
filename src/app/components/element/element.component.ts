@@ -21,5 +21,8 @@ export class ElementComponent implements OnInit {
   deleteElement(value){
     this.service.deleteUser(value)
   }
+  refresh(){
+    this.service.refreshData()
+  }
 
 }

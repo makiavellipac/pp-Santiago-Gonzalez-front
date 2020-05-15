@@ -13,16 +13,16 @@
     border-radius:  7px;
     text-align: center;
     color: honeydew;
+    height: 36px;
+    align-items: center;
 }
 .header_15,.element_15{
-    width: 15%;
+    width: 14%;
+    text-align: center;
 }
-.header_15{
-    border-left: 1px solid gray;
-    
-}
+
 .header_40,.element_40{
-    width: 40%;
+    width: 30%;
 }
 .table_content{
     padding: 0;

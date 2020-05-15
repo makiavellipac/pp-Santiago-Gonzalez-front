@@ -14,7 +14,10 @@
                 <h2>Genre</h2>
             </div>
             <div class="header_15">
-                
+                <h2>Date</h2>
+            </div>
+            <div class="header_15">
+                <button class="button_delete" (click)="refresh()">Refresh Data</button>
             </div>
         </div>
         <div class="table_content" *ngIf="service.data">
@@ -30,6 +33,9 @@
                 </div>
                 <div class="element_15">
                     {{element.gender}}
+                </div>
+                <div class="element_15">
+                    {{element.createdAt}}
                 </div>
                 <div class="element_15 button">
                     <button class="button_delete" value={{element._id}} (click)="deleteElement($event.toElement.value)">Delete</button>
