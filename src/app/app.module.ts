@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { ElementComponent } from './components/element/element.component';
 import { from } from 'rxjs';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    ElementComponent
+    ElementComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
