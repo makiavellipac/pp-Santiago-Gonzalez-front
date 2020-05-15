@@ -41,7 +41,15 @@
                     <button class="button_delete" value={{element._id}} (click)="deleteElement($event.toElement.value)">Delete</button>
                 </div>
             </div>
+            <div *ngIf="!(service.data.data)" class="error">
+                Server Error
+            </div>
+            <div *ngIf="service.data.data && service.data.data.length===0" class="error">
+                User does not exist
+            </div>
         </div>
+
+        
     </div>
 
 

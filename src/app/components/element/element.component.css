@@ -45,3 +45,11 @@
     color: #fff;
     border: none;
 }
+.error{
+    width: 100%;
+    font-size: 16px;
+    border-radius: 3px;
+    background-color: #F8D7DA;
+    border: 1px solid #DC3545;
+    color: crimson;
+}
