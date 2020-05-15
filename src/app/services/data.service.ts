@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, retry, catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -30,15 +31,13 @@ import { Injectable } from '@angular/core';
     }
 
     deleteUser(value){
-        this.http.delete(this.baseUrl+'/deleteRegistry/'+value)
+       return this.http.delete(this.baseUrl+'/deleteRegistry/'+value)
                  .subscribe(()=>this.refreshData()
                  ,error=>console.log(error))
     }
 
     registerUser(user){
-        this.http.post(this.baseUrl+'/newRegistry',user)
-                 .subscribe(()=>this.refreshData()
-                 ,error=>console.log(error))
+       return this.http.post(this.baseUrl+'/newRegistry',user)
     }
 
 

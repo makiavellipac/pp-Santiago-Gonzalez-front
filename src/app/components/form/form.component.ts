@@ -40,18 +40,22 @@ export class FormComponent implements OnInit {
     if(name!=="" && phone!=="" && age!=="" && gender!==""){
       const user=this.form.value
       this.service.registerUser(user)
-      this.name.setValue("")
-      this.phone.setValue("")
-      this.age.setValue("")
-      this.form.controls.gender.setValue("")
-      this.name.setErrors(null)
-      this.phone.setErrors(null)
-      this.age.setErrors(null)
+        .subscribe(()=>{
+          this.name.setValue("")
+          this.phone.setValue("")
+          this.age.setValue("")
+          this.form.controls.gender.setValue("")
+          this.name.setErrors(null)
+          this.phone.setErrors(null)
+          this.age.setErrors(null)
+          this.service.refreshData()
+        },error=>{
+          this.form.setErrors({invalidResponse:true})
+          console.log(error)})
+      
     }
     else{
-      this.form.setErrors({
-        invalidCreate:true
-      })  
+      this.form.setErrors({invalidCreate:true})  
     }
     
   }
