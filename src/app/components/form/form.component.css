@@ -22,17 +22,17 @@
     width: 100%;
     font-size: 16px;
     border-radius: 3px;
-    background-color: #DC3545;
+    background-color: #F8D7DA;
     border: 1px solid #DC3545;
-    color: #fff;
+    color: crimson;
 }
 .error_50{
     width: 100%;
     font-size: 16px;
     border-radius: 3px;
-    background-color: #DC3545;
+    background-color: #F8D7DA;
     border: 1px solid #DC3545;
-    color: #fff;
+    color: crimson;
 }
 .input_100{
     width: 100%;
@@ -47,7 +47,7 @@
     font-weight: 100;
     display: flex;
     align-items: center;
-    background-color: deepskyblue;
+    background-color: #6717FF;
     height: 50px;
     border-radius: 0 0 5px 5px;
     border-bottom: 4px solid crimson;
@@ -62,7 +62,7 @@
     padding-bottom: 10px;
 }
 .form_component_submit{
-    background: crimson;
+    background: #6717FF;
     color:#fff;
     border-radius: 5px;
     width: 100px;
