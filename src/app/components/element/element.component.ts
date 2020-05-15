@@ -1,7 +1,6 @@
-import { element } from 'protractor';
+import { HttpService } from './../../services/http.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { error } from '@angular/compiler/src/util';
+
 
 @Component({
   selector: 'app-element',
@@ -9,14 +8,18 @@ import { error } from '@angular/compiler/src/util';
   styleUrls: ['./element.component.css']
 })
 export class ElementComponent implements OnInit {
-    public data:any;
-  constructor(http:HttpClient) { 
-    http.get('http://localhost:3000/consultUser')
-      .subscribe(response=>this.data=response
-        ,error=>console.log("Error",error))
+      
+  constructor(public service:HttpService) { 
+    
+  }
+  
+
+  ngOnInit() {
+    this.service.getAllUser()
   }
 
-  ngOnInit(): void {
+  deleteElement(value){
+    this.service.deleteUser(value)
   }
 
 }

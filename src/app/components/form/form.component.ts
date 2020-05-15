@@ -1,7 +1,7 @@
-import { error } from '@angular/compiler/src/util';
+import { HttpService } from './../../services/http.service';
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl,Validator, Validators} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import {FormGroup,FormControl, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-form',
@@ -39,22 +39,14 @@ export class FormComponent implements OnInit {
     const {name,phone,age,gender}=this.form.value
     if(name!=="" && phone!=="" && age!=="" && gender!==""){
       const user=this.form.value
-      this.http.post('http://localhost:3000/newRegistry',user)
-               .subscribe(()=>{
-                this.name.setValue("")
-                this.phone.setValue("")
-                this.age.setValue("")
-                this.form.controls.gender.setValue("")
-                this.name.setErrors(null)
-                this.phone.setErrors(null)
-                this.age.setErrors(null)
-                alert("User was successfully created")},
-                ()=>{
-                  this.form.setErrors({
-                    invalidResponse:true
-                  })
-                })
-      
+      this.service.registerUser(user)
+      this.name.setValue("")
+      this.phone.setValue("")
+      this.age.setValue("")
+      this.form.controls.gender.setValue("")
+      this.name.setErrors(null)
+      this.phone.setErrors(null)
+      this.age.setErrors(null)
     }
     else{
       this.form.setErrors({
@@ -64,7 +56,7 @@ export class FormComponent implements OnInit {
     
   }
   
-  constructor(private http:HttpClient) {}
+  constructor(public service:HttpService) {}
   ngOnInit(): void {
   }
 }

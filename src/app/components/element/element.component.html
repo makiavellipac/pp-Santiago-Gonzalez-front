@@ -17,8 +17,8 @@
                 
             </div>
         </div>
-        <div class="table_content" *ngIf="data">
-            <div *ngFor="let element of data.data" class="element">
+        <div class="table_content" *ngIf="service.data">
+            <div *ngFor="let element of service.data.data" class="element">
                 <div class="element_40">
                     {{element.name}}
                 </div>
@@ -32,7 +32,7 @@
                     {{element.gender}}
                 </div>
                 <div class="element_15 button">
-                    <button class="button_delete">Delete</button>
+                    <button class="button_delete" value={{element._id}} (click)="deleteElement($event.toElement.value)">Delete</button>
                 </div>
             </div>
         </div>
